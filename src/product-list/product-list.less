@@ -1,3 +1,26 @@
 product-list {
 	display: block;
+
+	.list-of-products {
+		padding: 0;
+		list-style-type: none;
+
+		> li {
+			display: flex;
+			border-top: 1px solid #DDD;
+
+			> aside {
+				width: 218px;
+				text-align: center;
+			}
+
+			.product-info {
+			}
+		}
+
+		.product-image {
+			max-width: 15rem;
+			max-height: 15rem;
+		}
+	}
 }

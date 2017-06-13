@@ -6,16 +6,14 @@
     <can-import from="~/styles.less" />
     <can-import from="~/app" export-as="viewModel" />
     <can-import from="can-stache/helpers/route" />
+		<can-import from="~/app-cart/" />
 
     <header>
       <div class="header-left">
         <h1>Dog Stuff</h1>
       </div>
       <div class="header-right">
-        <a href="{{routeUrl page='cart'}}">
-          <img class="cart-img" src="/src/shopping-cart.svg" />
-          <span class="cart-count">0</span>
-        </a>
+        <app-cart></app-cart>
       </div>
     </header>
 
@@ -26,9 +24,18 @@
         {{/case}}
         {{#default}}
           <can-import from="~/product-list/">
-            {{#if isResolved}}
-              <product-list></product-list>
-            {{/if}}
+						<section class="product-page">
+							<aside class="sideoptions">
+								<h1>Categories</h1>
+								<ul>
+									<li>Bones</li>
+									<li>Food brands</li>
+								</ul>
+							</aside>
+							{{#if isResolved}}
+								<product-list></product-list>
+							{{/if}}
+						</section>
           </can-import>
         {{/default}}
       {{/switch}}

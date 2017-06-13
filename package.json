@@ -16,8 +16,9 @@
   "scripts": {
     "api": "node api/server.js",
     "test": "testee test.html --browsers firefox --reporter Spec",
-    "start": "done-serve --port 8080",
-    "develop": "done-serve --develop --port 8080",
+    "start": "done-serve --port 8080 --proxy http://localhost:8084",
+    "develop": "done-serve --develop --port 8080 --proxy http://localhost:8084",
+    "dev2": "done-serve --static --port 8080 --proxy http://localhost:8084",
     "build": "node build"
   },
   "main": "donejs-streaming-product-page/index.stache!done-autorender",
@@ -52,6 +53,7 @@
   "dependencies": {
     "can-component": "^3.0.7",
     "can-connect": "^1.3.8",
+    "can-connect-ndjson": "0.0.0",
     "can-define": "^1.0.17",
     "can-route": "^3.0.8",
     "can-route-pushstate": "^3.0.3",
@@ -59,10 +61,10 @@
     "can-stache": "^3.0.20",
     "can-view-autorender": "^3.0.4",
     "can-zone": "^0.6.6",
-    "done-serve": "^1.0.0",
     "done-autorender": "^1.0.0",
     "done-component": "^1.0.0",
     "done-css": "^3.0.0",
+    "done-serve": "^1.0.0",
     "generator-donejs": "^1.0.0",
     "steal": "^1.3.1",
     "steal-less": "^1.2.0",

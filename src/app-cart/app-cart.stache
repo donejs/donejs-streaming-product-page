@@ -1,1 +1,4 @@
-<p>{{message}}</p>
+<a href="{{routeUrl page='cart'}}" class="cart-link">
+	<img class="cart-img" src="/src/shopping-cart.svg" />
+	<span class="cart-count">{{count}}</span>
+</a>

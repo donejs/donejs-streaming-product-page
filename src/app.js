@@ -5,11 +5,11 @@ import 'can-route-pushstate';
 const AppViewModel = DefineMap.extend({
   page: "string",
   title: {
-    value: 'donejs-streaming-product-page',
+    value: 'Dog Stuff',
     serialize: false
   }
 });
 
-route(":page", { page: "home" });
+route("{page}", { page: "home" });
 
 export default AppViewModel;

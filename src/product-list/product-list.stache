@@ -1,9 +1,16 @@
-<p>{{message}}</p>
 
-<ul>
+<ul class="list-of-products">
   {{#each products}}
   <li>
-    <span>{{name}}</span>
+		<aside>
+			<img class="product-image" src="{{image}}" />
+		</aside>
+
+		<div class="product-info">
+			<header>
+				<h1>{{name}}</h1>
+			</header>
+		</div>
   </li>
   {{/each}}
 </ul>

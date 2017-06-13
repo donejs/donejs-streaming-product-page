@@ -1,9 +1,6 @@
 var http = require("http");
-
-var records = [
-	{ id: 1, name: "Bone" },
-	{ id: 2, name: "Food" }
-];
+var URL = require("url").URL;
+var records = require("./db.json");
 
 function getList(req, res) {
 	var wait = 200;
@@ -27,13 +24,31 @@ function getList(req, res) {
 }
 
 function get(req, res) {
+	res.writeHead(200, {
+		"Content-Type": "application/json"
+	});
+	res.end(JSON.stringify({}));
+}
 
+function cart(req, res){
+	res.writeHead(200, {
+		"Content-Type": "application/json"
+	});
+
+	var data = {
+		count: 15
+	};
+
+	res.end(JSON.stringify(data));
 }
 
 function handler(req, res){
-	switch(req.url) {
-		case "/api/products":
+	var url = new URL(req.url, "http://localhost:8084");
+	switch(url.pathname) {
+		case "/product":
 			return getList(req, res);
+		case "/cart":
+			return cart(req, res);
 		default:
 			return get(req, res);
 	}
