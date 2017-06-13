@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <can-import from="~/styles.less" />
+    <can-import from="~/app" export-as="viewModel" />
+    <can-import from="can-stache/helpers/route" />
+
+    <header>
+      <div class="header-left">
+        <h1>Dog Stuff</h1>
+      </div>
+      <div class="header-right">
+        <a href="{{routeUrl page='cart'}}">
+          <img class="cart-img" src="/src/shopping-cart.svg" />
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      {{#switch page}}
+        {{#case "cart"}}
+          <p>Cart stuff here</p>
+        {{/case}}
+        {{#default}}
+          <can-import from="~/product-list/">
+            {{#if isResolved}}
+              <product-list></product-list>
+            {{/if}}
+          </can-import>
+        {{/default}}
+      {{/switch}}
+    </main>
+
+    {{#switch env.NODE_ENV}}
+      {{#case "production"}}
+        <script src="{{joinBase 'steal.production.js'}}"></script>
+      {{/case}}
+      {{#default}}
+        <script src="/node_modules/steal/steal.js"></script>
+      {{/default}}
+    {{/switch}}
+
+    <footer>
+      <div>Icons made by <a href="http://www.flaticon.com/authors/stephen-hutchings" title="Stephen Hutchings">Stephen Hutchings</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    </footer>
+  </body>
+</html>
