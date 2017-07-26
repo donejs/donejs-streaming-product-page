@@ -11,15 +11,15 @@ module.exports = function(request){
 function productItem(product) {
 	var li = document.createElement("li");
 	li.innerHTML = `
-		<aside>
-			<img class="product-image" src="${product.image}" />
-		</aside>
+    <aside>
+      <img class="product-image" src="${product.image}" />
+    </aside>
 
-		<div class="product-info">
-			<header>
-				<h1>${product.name}</h1>
-			</header>
-		</div>
+    <div class="product-info">
+      <header>
+        <h1>${product.name}</h1>
+      </header>
+    </div>
 	`;
 	return li;
 }
@@ -34,27 +34,27 @@ function renderApp(request, document) {
         <h1>Dog Stuff</h1>
       </div>
       <div class="header-right">
-				<div id="cart"></div>
+        <div id="cart"></div>
       </div>
     </header>
 
-		<main>
-			<section class="product-page">
-				<aside class="sideoptions">
-					<h1>Categories</h1>
-					<ul>
-						<li>Bones</li>
-						<li>Food brands</li>
-					</ul>
-				</aside>
-				<div class="product-list">
-					<ul id="products" class="list-of-products">
-					</ul>
-				</div>
-			</section>
-		</main>
+    <main>
+      <section class="product-page">
+        <aside class="sideoptions">
+          <h1>Categories</h1>
+          <ul>
+          <li>Bones</li>
+          <li>Food brands</li>
+          </ul>
+        </aside>
+        <div class="product-list">
+          <ul id="products" class="list-of-products">
+          </ul>
+        </div>
+      </section>
+    </main>
 
-		<script src="./node_modules/steal/steal.js"></script>
+    <script src="./node_modules/steal/steal.js"></script>
 	`;
 
 	async function listProducts() {
