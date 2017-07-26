@@ -3,8 +3,9 @@ var isNode = require("detect-node");
 require("./styles.less");
 require("./product-list/product-list.less");
 
+// Export for Node usage
 module.exports = function(request){
-	renderInto(request, document);
+	renderApp(request, document);
 };
 
 function productItem(product) {
@@ -23,7 +24,7 @@ function productItem(product) {
 	return li;
 }
 
-function renderInto(request, document) {
+function renderApp(request, document) {
 	var ctn = document.createTextNode.bind(document);
 	document.title = "Dog Stuff";
 
@@ -91,8 +92,8 @@ function renderInto(request, document) {
 
 if(!isNode) {
 	var doc = document.implementation.createHTMLDocument();
-	renderInto({url:location.href}, doc);
+	renderApp({url:location.href}, doc);
 
-	// handoff
+	// Handoff for reattachment
 	doneSsrAttach(doc);
 }
