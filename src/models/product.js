@@ -25,8 +25,8 @@ Product.List = DefineList.extend({
 });
 
 Product.connection = connect([
-	dataUrl, constructor, constructorStore,
-	connectMap, ndjson
+	constructor, connectMap, constructorStore,
+	dataUrl, ndjson
 ], {
   url: loader.serviceBaseURL + '/api/product',
 	ndjson: loader.serviceBaseURL + '/api/product',

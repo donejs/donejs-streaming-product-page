@@ -1,7 +1,7 @@
 
 <ul class="list-of-products">
   {{#each products}}
-  <li>
+  <li id="product-{{id}}">
 		<aside>
 			<img class="product-image" src="{{image}}" />
 		</aside>
