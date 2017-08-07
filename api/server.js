@@ -37,9 +37,11 @@ function cart(req, res){
 
 	var data = {
 		count: 15
-	};
+	}
 
-	res.end(JSON.stringify(data));
+	setTimeout(function(){
+		res.end(JSON.stringify(data));
+	}, 500);
 }
 
 function handler(req, res){

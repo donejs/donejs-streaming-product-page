@@ -10,6 +10,9 @@
 			<header>
 				<h1>{{name}}</h1>
 			</header>
+			<div class="product-desc">
+				{{desc}}
+			</div>
 		</div>
   </li>
   {{/each}}
