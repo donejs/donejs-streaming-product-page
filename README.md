@@ -50,7 +50,24 @@ Now that you have a certificate you can use for development, update the `debug` 
 }
 ```
 
-Now start the server:
+This app uses a locally hosted API. In your scripts also add this:
+
+```json
+{
+  "scripts": {
+	  ...
+    "api": "node api/server.js"
+  }
+}
+```
+
+First start the API server in one terminal window:
+
+```shell
+donejs api
+```
+
+And in another terminal window start the server:
 
 ```shell
 donejs develop
@@ -76,4 +93,18 @@ This demo application shows off some of the streaming capabilities of DoneJS. Do
 
 *Incremental rendering* is a term we have come up with to describe a new streaming technique we've invented as part of DoneJS. Since *most* applications are made up of various dynamic parts, waiting for everything to load before rendering will result in a poor experience for your users. With the incremental rendering strategy DoneJS can provide many of the benefits of server-side rendering without forcing your users to wait on the slowest part.
 
+When you load this example app you'll see this to start:
 
+![app one thing loaded](https://user-images.githubusercontent.com/361671/29080326-7cc767a8-7c2d-11e7-8ab9-1508dcbce274.png)
+
+Notice that the cart has **0** by it. This is because the cart is still being loaded on the server. Meanwhile 1 product has already loaded.
+
+When implementing a traditional HTML streaming approach you would have to wait on the cart to load before streaming out any other content below it. Because incremental rendering isn't biased in favor of top-down loading, *the fastest parts of your app load first*.
+
+This mirrors what happens in the real world, where often times something like a product listing will load fast from the database, and user profile things (that tend to be at the top of the page, like the cart) my require more complex database queries.
+
+Waiting a second or so longer and you should see this now:
+
+![more stuff loaded](https://user-images.githubusercontent.com/361671/29080696-76bd691a-7c2e-11e7-9781-6b4e3942a2f2.png)
+
+The numbers demonstrate the loading order. First 2 product items load, then the cart, and finally more products.
