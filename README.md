@@ -49,3 +49,31 @@ Now that you have a certificate you can use for development, update the `debug` 
   }
 }
 ```
+
+Now start the server:
+
+```shell
+donejs develop
+```
+
+And open the page in the browser at `https://localhost:8080`. The first time you open the page you will get a security error because the certificate is not signed by a CA the browser recognizes. Since you are using this for local development you can ignore this error, it will only happen the first time.
+
+In Chrome first click on the link that says *ADVANCED*:
+
+![security advanced](https://user-images.githubusercontent.com/361671/29075035-37a59f5e-7c1f-11e7-90d1-6103f4c92687.png)
+
+And then click on the link saying *Proceed to localhost (advanced)*:
+
+![proceed to localhost](https://user-images.githubusercontent.com/361671/29075140-8e611922-7c1f-11e7-9a87-3c134324579b.png)
+
+Which should load up the app.
+
+## Features
+
+This demo application shows off some of the streaming capabilities of DoneJS. DoneJS utilizes HTTP/2 and the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to stream data from the server.
+
+### Incremental rendering
+
+*Incremental rendering* is a term we have come up with to describe a new streaming technique we've invented as part of DoneJS. Since *most* applications are made up of various dynamic parts, waiting for everything to load before rendering will result in a poor experience for your users. With the incremental rendering strategy DoneJS can provide many of the benefits of server-side rendering without forcing your users to wait on the slowest part.
+
+
