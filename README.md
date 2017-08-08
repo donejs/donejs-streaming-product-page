@@ -55,7 +55,6 @@ This app uses a locally hosted API. In your scripts also add this:
 ```json
 {
   "scripts": {
-	  ...
     "api": "node api/server.js"
   }
 }
@@ -108,3 +107,11 @@ Waiting a second or so longer and you should see this now:
 ![more stuff loaded](https://user-images.githubusercontent.com/361671/29080696-76bd691a-7c2e-11e7-9781-6b4e3942a2f2.png)
 
 The numbers demonstrate the loading order. First 2 product items load, then the cart, and finally more products.
+
+If you open up your devtools you can see the stream of commands. It will come from a URL prefixed with `_donessr_instructions/`. It looks like:
+
+![devtools screen shot](https://user-images.githubusercontent.com/361671/29082002-3c733b1e-7c32-11e7-9416-d05bb60481a4.png)
+
+### NDJSON
+
+
