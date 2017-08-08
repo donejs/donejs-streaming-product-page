@@ -4,7 +4,7 @@
 
 This readme walks through getting the project set up locally, and the features used to build the app.
 
-![app screen shot](https://user-images.githubusercontent.com/361671/29073940-8914c422-7c1b-11e7-8449-e35efb2727bb.png)
+![app screen shot](https://user-images.githubusercontent.com/361671/29074136-2dff5cc2-7c1c-11e7-929a-1c77b19fda91.png)
 
 ## Setting up
 
@@ -48,34 +48,4 @@ Now that you have a certificate you can use for development, update the `debug` 
     "develop": "done-serve --develop --port 8080 --proxy http://localhost:8084 --key ~/.localhost-ssl/server.key --cert ~/.localhost-ssl/server.cert --strategy incremental"
   }
 }
-```
-
-## Running tests
-
-Tests can be run with
-
-```
-donejs test
-```
-
-## Development mode
-
-Development mode can be started with
-
-```
-donejs develop
-```
-
-## Build and production mode
-
-To build the application into a production bundle run
-
-```
-donejs build
-```
-
-In Unix environment the production application can be started like this:
-
-```
-NODE_ENV=production npm start
 ```
