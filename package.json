@@ -16,9 +16,9 @@
   "scripts": {
     "api": "node api/server.js",
     "test": "testee test.html --browsers firefox --reporter Spec",
-    "start": "done-serve --port 8080 --proxy http://localhost:8084 --strategy incremental --key ~/.localhost-ssl/private.pem --cert ~/.localhost-ssl/cert.pem",
+    "start": "done-serve --port 8080 --proxy http://localhost:8084 --strategy incremental --key ~/.localhost-ssl/server.key --cert ~/.localhost-ssl/server.cert",
     "start-slow": "done-serve --port 8080 --proxy http://localhost:8084",
-    "develop": "done-serve --develop --port 8080 --proxy http://localhost:8084",
+    "develop": "done-serve --develop --port 8080 --proxy http://localhost:8084 --key ~/.localhost-ssl/server.key --cert ~/.localhost-ssl/server.cert --strategy incremental",
     "debug": "DONE_SSR_DEBUG=1 node --debug-brk --inspect node_modules/.bin/done-serve --port 8080 --proxy http://localhost:8084 --strategy incremental --key ~/.localhost-ssl/private.pem --cert ~/.localhost-ssl/cert.pem",
     "debug-client": "DONE_SSR_DEBUG=1 done-serve --port 8080 --proxy http://localhost:8084 --strategy incremental --key ~/.localhost-ssl/private.pem --cert ~/.localhost-ssl/cert.pem",
     "build": "node build"
