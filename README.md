@@ -114,4 +114,33 @@ If you open up your devtools you can see the stream of commands. It will come fr
 
 ### NDJSON
 
+The Dog Things app uses [NDJSON](https://davidwalsh.name/streaming-data-fetch-ndjson) to stream in the product list from the server. NDJSON is a format of data that delimits rows (from list queries) as newline delimited. It looks like this:
 
+```ndjson
+{ "product": "Bones", "img": "https://..." }
+{ "product": "Treats", "img": "https://..." }
+```
+
+If you look in `src/models/products.js` you will see the import of [can-connect-ndjson](https://github.com/canjs/can-connect-ndjson):
+
+```js
+import ndjson from "can-connect-ndjson";
+```
+
+and then the use:
+
+```js
+Product.connection = connect([
+	constructor, connectMap, constructorStore,
+	dataUrl, ndjson
+], {
+  url: loader.serviceBaseURL + '/api/product',
+	ndjson: loader.serviceBaseURL + '/api/product',
+  Map: Product,
+  List: Product.List,
+  name: 'product',
+  algebra
+});
+```
+
+Notice that this utilizes an **ndjson** property on the connection. In this case it is the same url as used for JSON, but if you wanted you could use different URLs. This would allow you to use ndjson streaming data for users with supported browsers and then to fallback to a JSON service for those that do not.
