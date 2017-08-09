@@ -40,7 +40,7 @@ mv server.key server.cert ~/.localhost-ssl
 
 ### Turning on incremental rendering
 
-Now that you have a certificate you can use for development, update the `debug` script in your package.json:
+Now that you have a certificate you can use for development, update the `develop` script in your package.json:
 
 ```json
 {
@@ -96,11 +96,11 @@ When you load this example app you'll see this to start:
 
 ![app one thing loaded](https://user-images.githubusercontent.com/361671/29080326-7cc767a8-7c2d-11e7-8ab9-1508dcbce274.png)
 
-Notice that the cart has **0** by it. This is because the cart is still being loaded on the server. Meanwhile 1 product has already loaded.
+Notice that the cart shows **0** items. This is because the cart is still being loaded on the server. Meanwhile 1 product has already loaded.
 
-When implementing a traditional HTML streaming approach you would have to wait on the cart to load before streaming out any other content below it. Because incremental rendering isn't biased in favor of top-down loading, *the fastest parts of your app load first*.
+When implementing a traditional HTML streaming approach you would have to wait on the cart to load before streaming out any other content below it. Incremental rendering isn't biased in favor of top-down loading, so *the fastest parts of your app load first*.
 
-This mirrors what happens in the real world, where often times something like a product listing will load fast from the database, and user profile things (that tend to be at the top of the page, like the cart) my require more complex database queries.
+This mirrors what happens in the real world, where often times something like a product listing will load fast from the database, and user profile things (that tend to be at the top of the page, like the cart) might require more complex database queries.
 
 Waiting a second or so longer and you should see this now:
 
@@ -114,7 +114,7 @@ If you open up your devtools you can see the stream of commands. It will come fr
 
 ### NDJSON
 
-The Dog Things app uses [NDJSON](https://davidwalsh.name/streaming-data-fetch-ndjson) to stream in the product list from the server. NDJSON is a format of data that delimits rows (from list queries) as newline delimited. It looks like this:
+The Dog Things app uses [NDJSON](https://davidwalsh.name/streaming-data-fetch-ndjson) to stream in the product list from the server. NDJSON is a format of data that delimits rows (from list queries) with newlines. It looks like this:
 
 ```ndjson
 { "product": "Bones", "img": "https://..." }
