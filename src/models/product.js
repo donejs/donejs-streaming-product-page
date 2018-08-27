@@ -1,7 +1,6 @@
 import connect from 'can-connect';
-import DefineMap from 'can-define/map/';
-import DefineList from 'can-define/list/';
-import set from 'can-set';
+import DefineMap from 'can-define/map/map';
+import DefineList from 'can-define/list/list';
 import loader from '@loader';
 
 import dataUrl from "can-connect/data/url/url";
@@ -13,12 +12,11 @@ import ndjson from "can-connect-ndjson";
 const Product = DefineMap.extend({
   seal: false
 }, {
-  'id': 'any'
+  'id': {
+		type: 'any',
+		identity: true
+	}
 });
-
-const algebra = new set.Algebra(
-  set.props.id('id')
-);
 
 Product.List = DefineList.extend({
   '#': Product
@@ -32,8 +30,7 @@ Product.connection = connect([
 	ndjson: loader.serviceBaseURL + '/api/product',
   Map: Product,
   List: Product.List,
-  name: 'product',
-  algebra
+  name: 'product'
 });
 
 export default Product;

@@ -1,17 +1,17 @@
 
 <ul class="list-of-products">
-  {{#each products}}
+  {{#each(products)}}
   <li id="product-{{id}}">
 		<aside>
-			<img class="product-image" src="{{image}}" />
+			<img class="product-image" src="{{./image}}" />
 		</aside>
 
 		<div class="product-info">
 			<header>
-				<h1>{{name}}</h1>
+				<h1>{{./name}}</h1>
 			</header>
 			<div class="product-desc">
-				{{desc}}
+				{{./desc}}
 			</div>
 		</div>
   </li>

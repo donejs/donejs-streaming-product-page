@@ -4,7 +4,9 @@ var records = require("./db.json");
 
 function getList(req, res) {
 	var wait = 200;
-	var list = records.slice();
+	var list = records.slice().map(rec => JSON.stringify(rec));
+	var len = list.reduce((size, cur) => { size += Buffer.byteLength(cur); return size; }, 0);
+
 	function next() {
 		var cur = list.shift();
 		if(!cur) {
@@ -12,13 +14,14 @@ function getList(req, res) {
 			return;
 		}
 
-		var str = JSON.stringify(cur) + "\n";
+		var str = cur + "\n";
 		res.write(str);
 		setTimeout(next, wait);
 	}
 
 	res.writeHead(200, {
-		"Content-Type": "application/json"
+		"Content-Type": "application/x-ndjson",
+		"Content-Length": len.toString()
 	});
 	setTimeout(next, wait);
 }
@@ -47,6 +50,10 @@ function cart(req, res){
 function handler(req, res){
 	var url = new URL(req.url, "http://localhost:8084");
 	switch(url.pathname) {
+		case "/":
+			var fs = require("fs");
+			fs.createReadStream(__dirname + "/../ndjson.html").pipe(res);
+			break;
 		case "/product":
 			return getList(req, res);
 		case "/cart":

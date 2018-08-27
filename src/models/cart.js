@@ -1,19 +1,17 @@
-import DefineMap from 'can-define/map/';
-import DefineList from 'can-define/list/';
-import set from 'can-set';
-import superMap from 'can-connect/can/super-map/';
+import DefineMap from 'can-define/map/map';
+import DefineList from 'can-define/list/list';
+import realTimeRestModel from "can-realtime-rest-model";
 import loader from '@loader';
 
 const Cart = DefineMap.extend({
   seal: false
 }, {
-  'id': 'any',
+  'id': {
+		type: 'any',
+		identity: true
+	},
 	count: "number"
 });
-
-const algebra = new set.Algebra(
-  set.props.id('id')
-);
 
 Cart.List = DefineList.extend({
   '#': Cart
@@ -21,7 +19,7 @@ Cart.List = DefineList.extend({
 
 const url = loader.serviceBaseURL + '/api/cart';
 
-Cart.connection = superMap({
+Cart.connection = realTimeRestModel({
 	url: {
 		getData: url,
 		createData: url,
@@ -29,8 +27,7 @@ Cart.connection = superMap({
 	},
   Map: Cart,
   List: Cart.List,
-  name: 'cart',
-  algebra
+  name: 'cart'
 });
 
 export default Cart;

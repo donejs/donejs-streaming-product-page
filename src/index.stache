@@ -5,7 +5,7 @@
   <body>
     <can-import from="~/styles.less" />
     <can-import from="~/app" export-as="viewModel" />
-    <can-import from="can-stache/helpers/route" />
+    <can-import from="can-stache-route-helpers" />
 		<can-import from="~/app-cart/" />
 
     <header>
@@ -13,7 +13,7 @@
         <h1>Dog Things</h1>
       </div>
       <div class="header-right">
-        <app-cart (error)="addCartError(%arguments)"></app-cart>
+        <app-cart on:error="addCartError(%arguments)"></app-cart>
       </div>
     </header>
 
@@ -32,7 +32,7 @@
 									<li>Food brands</li>
 								</ul>
 							</aside>
-							{{#if isResolved}}
+							{{#if(isResolved)}}
 								<product-list></product-list>
 							{{/if}}
 						</section>

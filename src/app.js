@@ -5,7 +5,7 @@ import 'can-route-pushstate';
 const AppViewModel = DefineMap.extend({
   page: "string",
   title: {
-    value: 'Dog Things',
+    default: 'Dog Things',
     serialize: false
   },
 	addCartError: function([,err]){
@@ -13,6 +13,6 @@ const AppViewModel = DefineMap.extend({
 	}
 });
 
-route("{page}", { page: "home" });
+route.register("{page}", { page: "home" });
 
 export default AppViewModel;

@@ -11,9 +11,6 @@ export const ViewModel = DefineMap.extend({
       this.productsPromise.then(resolve);
     }
   },
-  message: {
-    value: 'This is the product-list component'
-  },
   get productsPromise() {
     return Product.getList({});
   }

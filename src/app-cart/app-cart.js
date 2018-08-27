@@ -1,5 +1,5 @@
 import Component from 'can-component';
-import DefineMap from 'can-define/map/';
+import DefineMap from 'can-define/map/map';
 import './app-cart.less';
 import view from './app-cart.stache';
 import Cart from '../models/cart';
@@ -17,7 +17,7 @@ export const ViewModel = DefineMap.extend({
 
 	count: {
 		type: "number",
-		value: 0,
+		default: 0,
 		get: function(lastSet, resolve){
 			var cart = this.cart;
 			if(cart) {
