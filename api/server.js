@@ -4,7 +4,7 @@ var records = require("./db.json");
 
 function getList(req, res) {
 	var wait = 200;
-	var list = records.slice().map(rec => JSON.stringify(rec));
+	var list = records.slice().map(rec => JSON.stringify(rec) + "\n");
 	var len = list.reduce((size, cur) => { size += Buffer.byteLength(cur); return size; }, 0);
 
 	function next() {
@@ -14,8 +14,7 @@ function getList(req, res) {
 			return;
 		}
 
-		var str = cur + "\n";
-		res.write(str);
+		res.write(cur);
 		setTimeout(next, wait);
 	}
 

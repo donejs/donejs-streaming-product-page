@@ -37,7 +37,6 @@
       "lib": "src"
     },
     "configDependencies": [
-      "live-reload",
       "node_modules/can-zone/register"
     ],
     "plugins": [
@@ -75,12 +74,14 @@
     "steal-stache": "^4.1.2"
   },
   "devDependencies": {
+    "can-fixture": "^3.0.0",
+    "done-mutation": "^0.4.1",
     "donejs-cli": "^3.0.0-pre.0",
     "funcunit": "^3.2.0",
+    "incrementally-rendered-frame": "^1.1.0",
     "steal-qunit": "^1.0.1",
     "steal-tools": "^2.0.4",
-    "testee": "^0.8.1",
-    "can-fixture": "^3.0.0"
+    "testee": "^0.8.1"
   },
   "license": "MIT"
 }

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<title>Dog Things Incremental - Side by Side</title>
+<style>
+	* {
+		box-sizing: border-box;
+	}
+	html, body {
+		height: 100%;
+	}
+
+	incrementally-rendered-frame {
+		display: block;
+		height: 90%;
+	}
+</style>
+
+<script type="module" src="./node_modules/incrementally-rendered-frame/incrementally-rendered-frame.js"></script>
+<incrementally-rendered-frame src="./development.html" omit-log></incrementally-rendered-frame>
+
+<script src="../node_modules/steal/steal.js" data-no-live-reload></script>
