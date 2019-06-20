@@ -1,5 +1,7 @@
 # Dog Things
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/donejs/donejs-streaming-product-page.svg)](https://greenkeeper.io/)
+
 **Dog Things** is a [DoneJS](https://donejs.com/) application that allows users to view dog products like leashes and bones, and to add items to their cart. This application shows off the advantages of [streamable](https://www.bitovi.com/streamable) web applications and how DoneJS facilitates building them.
 
 This readme walks through getting the project set up locally, and the features used to build the app.
